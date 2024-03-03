@@ -1,10 +1,24 @@
-import Image from "next/image";
-import Navbar from "./components/Navbar";
+import { simpleBlogCard } from "./lib/interface";
+import { client } from "./lib/sanity";
 
-export default function Home() {
+async function getData() {
+  const query = `
+  *[_type == "blog"] | order(_createdAt desc) {
+    title,
+      smallDescription,
+      "currentSlug" : slug.current
+  }
+  `;
+  const data = await client.fetch(query);
+  return data;
+}
+
+export default async function Home() {
+  const data: simpleBlogCard[] = await getData();
+  console.log(data);
   return (
-    <div className="w-full flex flex-col  max-w-2xl px-5 mx-auto">
-      <h1>hello this is blog main page</h1>
+    <div>
+      <h1>hello</h1>
     </div>
   );
 }
