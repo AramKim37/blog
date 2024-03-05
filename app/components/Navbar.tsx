@@ -3,7 +3,7 @@ import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   return (
-    <nav className="w-full flex justify-between items-center px-4 py-5">
+    <nav className="w-full flex justify-between items-center py-5">
       <h1>
         This is <span className="text-primary font-bold">navbar</span>
       </h1>
