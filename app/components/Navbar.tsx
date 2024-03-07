@@ -3,9 +3,9 @@ import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   return (
-    <nav className="w-full flex justify-between items-center py-5">
+    <nav className="max-w-screen-md w-full flex justify-between items-center py-5 fixed top-0 mx-auto px-2">
       <h1>
-        This is <span className="text-primary font-bold">navbar</span>
+        AK`s <span className="text-primary font-bold">BLOG</span>
       </h1>
       <ModeToggle />
     </nav>

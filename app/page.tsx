@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { simpleBlogCard } from "./lib/interface";
 import { client, urlFor } from "./lib/sanity";
+import Link from "next/link";
+
+export const revalidate = 30;
 
 async function getData() {
   const query = `
@@ -18,23 +21,28 @@ async function getData() {
 export default async function Home() {
   const data: simpleBlogCard[] = await getData();
   return (
-    <div className="grid grid-cols-2  mx-auto gap-5">
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 mt-[100px]">
       {data.map((post, idx) => (
-        <div
-          key={idx}
-          className="flex flex-col items-center justify-center border border-white rounded-xl"
-        >
+        <div key={idx} className="w-full border border-white rounded-xl">
           <Image
             src={urlFor(post.titleImage).url()}
             alt="image"
-            width={500}
+            width={400}
             height={300}
-            className="object-cover object-center h-[200px] rounded-t-xl "
+            className="object-fill object-center h-[300px] rounded-xl "
           />
-          <div className="w-full flex flex-col items-left justify-center p-5 gap-2">
-            <h1>{post.title}</h1>
-            <p>{post.smallDescription}</p>
-            <button className="bg-primary p-2 rounded-xl">READ MORE</button>
+          <div className="w-full flex flex-col items-center justify-between p-5 space-y-3 h-[200px] overflow-scroll ">
+            <div className="flex flex-col h-full w-full items-center justify-between">
+              <h1 className="text-xl uppercase text-center mx-auto">
+                {post.title}
+              </h1>
+              <p className="">{post.smallDescription}</p>
+              <Link href={`/blog/${post.currentSlug}`} className="w-full">
+                <button className="w-full bg-primary p-2 rounded-xl">
+                  READ MORE
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       ))}
