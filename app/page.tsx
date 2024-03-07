@@ -21,24 +21,27 @@ async function getData() {
 export default async function Home() {
   const data: simpleBlogCard[] = await getData();
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 mt-[100px] ">
+    <div className="w-full flex flex-col md:flex-row items-center justify-center gap-5 mt-[100px]">
       {data.map((post, idx) => (
-        <div key={idx} className="w-full border border-white rounded-xl">
+        <div
+          key={idx}
+          className="w-[400px] flex flex-col border border-gray-500 dark:border-white rounded-xl"
+        >
           <Image
             src={urlFor(post.titleImage).url()}
             alt="image"
             width={400}
             height={300}
-            className="object-fill object-center h-[300px] rounded-xl "
+            className="object-fill object-center w-[500px] h-[300px] rounded-xl border border-b-gray-500 "
           />
-          <div className="w-full flex flex-col items-center justify-between p-5 space-y-3 h-[200px] overflow-scroll ">
+          <div className="w-full flex flex-col items-center justify-between p-5 space-y-3 h-[200px] overflow-scroll text-whitebg-secondary text-gray-400">
             <div className="flex flex-col h-full w-full items-center justify-between">
               <h1 className="text-xl uppercase text-center mx-auto">
                 {post.title}
               </h1>
               <p className="">{post.smallDescription}</p>
               <Link href={`/blog/${post.currentSlug}`} className="w-full">
-                <button className="w-full bg-primary p-2 rounded-xl">
+                <button className="w-full bg-primary p-2 rounded-xl text-white">
                   READ MORE
                 </button>
               </Link>
