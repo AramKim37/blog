@@ -21,7 +21,7 @@ async function getData() {
 export default async function Home() {
   const data: simpleBlogCard[] = await getData();
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 mt-[100px]">
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 mx-auto gap-5 mt-[100px] ">
       {data.map((post, idx) => (
         <div key={idx} className="w-full border border-white rounded-xl">
           <Image
