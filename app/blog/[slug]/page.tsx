@@ -24,7 +24,7 @@ export default async function Article({
 }) {
   const data: BlogArticle | null = await getData(params.slug);
   return (
-    <div>
+    <div className="max-w-2xl mt-[100px]">
       <h1>Welcome to My blog</h1>
       <h2>{data?.title}</h2>
       <div>

@@ -21,18 +21,18 @@ async function getData() {
 export default async function Home() {
   const data: simpleBlogCard[] = await getData();
   return (
-    <div className="w-full flex flex-col md:flex-row items-center justify-center gap-5 mt-[100px]">
+    <div className="max-w-screen-md w-full flex flex-col md:flex-row items-center mt-[50px] pt-[50px] gap-10  z-0 justify-center mx-auto">
       {data.map((post, idx) => (
         <div
           key={idx}
-          className="w-[400px] flex flex-col border border-gray-500 dark:border-white rounded-xl"
+          className="w-[300px] flex flex-col border border-gray-500 dark:border-white rounded-xl"
         >
           <Image
             src={urlFor(post.titleImage).url()}
             alt="image"
-            width={400}
+            width={300}
             height={300}
-            className="object-fill object-center w-[500px] h-[300px] rounded-xl border border-b-gray-500 "
+            className="object-fill object-center w-[300px] h-[200px] rounded-xl border border-b-gray-500 "
           />
           <div className="w-full flex flex-col items-center justify-between p-5 space-y-3 h-[200px] overflow-scroll text-whitebg-secondary text-gray-400">
             <div className="flex flex-col h-full w-full items-center justify-between">
